@@ -130,3 +130,9 @@ article.generous-donation h2 {
   display: table;
   clear: both;
 }
+
+#ConsoleDisplay {
+  font-style: italic;
+  color: #16BECF;
+  padding: .5em;
+}
