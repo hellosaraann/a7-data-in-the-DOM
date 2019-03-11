@@ -1,4 +1,4 @@
-//For readability and clarity it is good practice to declare variables at the beginning of the JS document if possible
+//initial variables
 var churchillSpeech = {
       'author': 'Churchill',
       'year': 1940,
@@ -20,6 +20,11 @@ var churchillSpeech = {
     speechesArray = [churchillSpeech, ghandiSpeech, demosthenesSpeech],
     donatePrompt;
 
+
+//donation button script
+var articles = document.getElementsByTagName('article'),
+    i = 0;
+
 document.getElementById('BtnDonate').addEventListener('click', function(){
 
   donationAmount = window.prompt('How much would you like to donate?');
@@ -27,15 +32,20 @@ document.getElementById('BtnDonate').addEventListener('click', function(){
 
   if (donationAmount < 100){
     var donationThankYouText = document.createTextNode('Thank you for your donation of ' + donationAmount + '.');
-  } if (donationAmount >= 100) {
+  } else if (donationAmount >= 100) {
     var donationThankYouText = document.createTextNode('Thank you for your very generous donation of ' + donationAmount + '!!');
     donationThankYou.setAttribute("style", "color: #DB152C");
-  };
+    for (i = 0; i < articles.length; i++){
+      articles[i].classList.add('generous-donation');
+    };
 
+  };
   donationThankYou.appendChild(donationThankYouText);
   document.querySelector("#ConsoleDisplay").appendChild(donationThankYou);
 });
 
+
+//author nav buttons script — Churchill
 var consoleDisplayText = document.createElement( "p" );
 document.querySelector("#ConsoleDisplay").appendChild(consoleDisplayText);
 
@@ -69,6 +79,8 @@ document.getElementById('BtnChurchill').addEventListener('click', function(){
   }
 });
 
+
+//author nav buttons script — Ghandi
 document.getElementById('BtnGhandi').addEventListener('click', function(){
   //Code in here executes when the user clicks the "Ghandi" button.
   consoleDisplayText.innerHTML = 'This speech was written by ' + speechesArray[1].author + ' in ' + speechesArray[1].year + '. ';
@@ -99,6 +111,8 @@ document.getElementById('BtnGhandi').addEventListener('click', function(){
   }
 });
 
+
+//author nav buttons script — Demosthenes
 document.getElementById('BtnDemosthenes').addEventListener('click', function(){
   //Code in here executes when the user clicks the "Demosthenes" button.
   consoleDisplayText.innerHTML = 'This speech was written by ' + speechesArray[2].author + ' in ' + speechesArray[2].year + '. ';
